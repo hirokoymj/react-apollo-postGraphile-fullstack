@@ -1,8 +1,8 @@
 import React from "react";
-import { BrowserRouter, Router, Route, Switch } from "react-router-dom";
-import { Homepage, SinglePeople } from "../components/Homepage";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { Homepage } from "../components/Homepage";
 import { NotFoundPage } from "../components/NotFoundPage";
-import { SimpleTestPage } from "../components/SimpleTestPage";
+//import { SimpleTestPage } from "../components/SimpleTestPage";
 
 const IntroPage = () => {
   return <h1>Intro Page</h1>;

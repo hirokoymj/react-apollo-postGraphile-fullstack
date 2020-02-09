@@ -1,13 +1,30 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Field, reduxForm } from "redux-form";
 import { useMutation } from "@apollo/react-hooks";
 import get from "lodash/get";
+import Dialog from "@material-ui/core/Dialog";
+// import DialogActions from "@material-ui/core/DialogActions";
+// import DialogContent from "@material-ui/core/DialogContent";
+// import DialogContentText from "@material-ui/core/DialogContentText";
+import DialogTitle from "@material-ui/core/DialogTitle";
+import { useHistory, useLocation } from "react-router-dom";
 
 import { CREATE_PERSON } from "../Mutations/CreatePeople";
+
+const AlertDialog = ({ open, title }) => {
+  console.log("AlertDialog");
+  console.log(open);
+  return (
+    <Dialog open={open}>
+      <DialogTitle>{title}</DialogTitle>
+    </Dialog>
+  );
+};
 
 const SimpleTestFormController = ({ children }) => {
   const initialValues = {};
   const [createPerson] = useMutation(CREATE_PERSON);
+  const history = useHistory();
 
   const onSubmit = async values => {
     try {
@@ -24,8 +41,9 @@ const SimpleTestFormController = ({ children }) => {
         }
       });
       console.log(resp);
-      const id = get(resp, "data.createPerson.person.id");
-      console.log(id);
+      const personId = get(resp, "data.createPerson.person.id");
+      console.log(personId);
+      history.push("/home", { personId });
     } catch (e) {
       console.error(e);
     }
@@ -98,12 +116,30 @@ export const SimpleTestForm = reduxForm({
 });
 
 export const SimpleTestPage = () => {
+  const [opened, setOpened] = useState(false);
+  const [personId, setPersonId] = useState("");
+  const location = useLocation();
+
+  useEffect(() => {
+    console.log("useEffect");
+
+    const id = get(location, "state.personId");
+    setPersonId(id);
+    console.log(personId);
+    if (personId !== "") {
+      setOpened(true);
+    } else {
+      setOpened(false);
+    }
+  }, [location, personId]);
+
   return (
     <>
       <h1>Simple Form aaaaa</h1>
       <SimpleTestFormController>
         {props => <SimpleTestForm {...props} />}
       </SimpleTestFormController>
+      <AlertDialog open={opened} title={`New ID #${personId}`} />
     </>
   );
 };

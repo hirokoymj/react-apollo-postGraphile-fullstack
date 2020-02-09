@@ -1,8 +1,7 @@
-import React, { Fragment } from "react";
+import React from "react";
 import { useQuery } from "@apollo/react-hooks";
 import get from "lodash/get";
-import { Route, Switch, Link, useParams } from "react-router-dom";
-import Button from "@material-ui/core/Button";
+import { Route, Link, useParams } from "react-router-dom";
 import Grid from "@material-ui/core/Grid";
 //import Container from "@material-ui/core/Container";
 import DefaultPageTitle from "./PageTitle";
@@ -21,7 +20,7 @@ const HomepageLayout = ({ children }) => {
 };
 
 const PeopleTable = () => {
-  const { loading, error, data } = useQuery(ALL_PEOPLE);
+  const { loading, data } = useQuery(ALL_PEOPLE);
   const all_people = get(data, "allPeople.edges", []);
 
   return (
@@ -48,7 +47,7 @@ const PeopleTable = () => {
 
 export const SinglePeople = () => {
   let { id } = useParams();
-  const { loading, error, data } = useQuery(PERSON_BY_ID, {
+  const { loading, data } = useQuery(PERSON_BY_ID, {
     variables: { id: parseInt(id) }
   });
   const { nodeId, firstName, lastName } = get(data, "personById", {});
