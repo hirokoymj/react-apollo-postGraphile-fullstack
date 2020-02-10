@@ -1,12 +1,5 @@
 # Redux Form
 
-
-- [Redux Form](#redux-form)
-	- [submitting property](#submitting-property)
-	- [formValueSelector](#formvalueselector)
-	- [Redux Form Architecture](#redux-form-architecture)
-
-
 ## submitting property
 
 [submitting](https://redux-form.com/8.3.0/docs/api/reduxform.md/#-code-onsubmit-function-code-optional-)
