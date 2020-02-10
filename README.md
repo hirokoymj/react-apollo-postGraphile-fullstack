@@ -13,8 +13,6 @@
 - [formValueSelector](readme-ReduxForm.md#formvalueselector)
 - [Redux Form Architecture](readme-ReduxForm.md#redux-form-architecture)
 
-### Material-Ui
-
 ### Visual Studio Code Config
 
 **Open Files always in a new tab**
