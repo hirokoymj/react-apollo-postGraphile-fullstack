@@ -9,9 +9,9 @@
 
 ### Redux Form
 
-- [submitting property](readme-Redux-Form.md#submitting-property)
-- [formValueSelector](readme-Redux-Form.md#formvalueselector)
-- [Redux Form Architecture](readme-Redux-Form.md#Redux-Form-Architecture)
+- [submitting property](readme-ReduxForm.md#submitting-property)
+- [formValueSelector](readme-ReduxForm.md#formvalueselector)
+- [Redux Form Architecture](readme-ReduxForm.md#redux-form-architecture)
 
 ### Material-Ui
 
