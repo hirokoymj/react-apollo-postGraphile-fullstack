@@ -3,9 +3,9 @@
 ### Apollo Client
 
 - [@apollo/react-hooks](reacme-React-Apollo.md#apolloreact-hooks)
-- [Installation](reacme-React-Apollo.md#installation)
-- [example 1 - useMutation](reacme-React-Apollo.md#mutations)
-- [example 1 - useMutation with refetchQueries](reacme-React-Apollo.md#mutations)
+- [Installation](/blob/master/readme-React-Apollo.md#installation)
+- [example 1 - useMutation](/blob/master/readme-React-Apollo.md#example-1---usemutation)
+- [example 1 - useMutation with refetchQueries](/blob/master/readme-React-Apollo.md#example-2---usemutation-with-refetchqueries)
 
 ### Redux Form
 
