@@ -2,9 +2,9 @@
 
 
 - [Redux Form](#redux-form)
-  - [submitting property](#submitting-property)
-  - [formValueSelector](#formvalueselector)
-  - [Redux Form Architecture](#redux-form-architecture)
+	- [submitting property](#submitting-property)
+	- [formValueSelector](#formvalueselector)
+	- [Redux Form Architecture](#redux-form-architecture)
 
 
 ## submitting property
@@ -27,8 +27,13 @@ export const SimpleTestForm = reduxForm({
 ```
 
 ```js
-
-
+const SimpleFormFields = ({ handleSubmit, submitting }) => {
+  return (
+    <button type="submit" onClick={handleSubmit}>
+      {submitting ? "Submitting" : "Submit"}
+    </button>
+  );
+};
 ```
 
 ## formValueSelector

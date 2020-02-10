@@ -2,7 +2,7 @@ const express = require("express");
 const { postgraphile } = require("postgraphile");
 
 const db_user = "";
-const db_name = "hiroko";
+const db_name = "hirokoyamaji";
 const db_schema = "forum_example";
 const port = process.env.PORT ? process.env.PORT : 3030;
 

@@ -12,7 +12,9 @@ npm install @apollo/react-hooks
 ```
 <hr />
 
-### useMutation - Example 1
+## Mutations
+
+**Example 1 - useMutation**
 
 - POINT - variables have to pass `person object`!!
 ```js
@@ -69,5 +71,39 @@ const SimpleTestFormController = () => {
     }
   };
 ```
+<hr />
+
+**Example 2 - useMutation with refetchQueries**
+
+- [useMutation](https://www.apollographql.com/docs/react/api/react-hooks/#usemutation)
+- [Mutations](https://www.apollographql.com/docs/react/data/mutations/)
+- refetchQueries : Array 
+ An array or function that allows you to specify which queries you want to refetch after a mutation has occurred. 
+
+```js
+const SimpleFormController = () => {
+  const [createPerson] = useMutation(CREATE_PERSON);
+  const onSubmit = values => {
+    try {
+      const resp = createPerson({
+        variables: {
+          person: {
+            firstName: values.firstName,
+            lastName: values.lastName
+          }
+        },
+        refetchQueries: [
+          {
+            query: ALL_PEOPLE
+          }
+        ]
+      });
+    } catch (e) {
+      console.error(e);
+    }
+  };
+}
+```
+
 <hr />
 

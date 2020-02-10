@@ -3,19 +3,15 @@ import { Field, reduxForm } from "redux-form";
 import { useMutation } from "@apollo/react-hooks";
 import get from "lodash/get";
 import Dialog from "@material-ui/core/Dialog";
-// import DialogActions from "@material-ui/core/DialogActions";
-// import DialogContent from "@material-ui/core/DialogContent";
-// import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import { useHistory, useLocation } from "react-router-dom";
 
 import { CREATE_PERSON } from "../Mutations/CreatePeople";
+import { ALL_PEOPLE } from "../Queries/PeopleQueries";
 
-const AlertDialog = ({ open, title }) => {
-  console.log("AlertDialog");
-  console.log(open);
+const AlertDialog = ({ open, title, onClose }) => {
   return (
-    <Dialog open={open}>
+    <Dialog open={open} onClose={onClose}>
       <DialogTitle>{title}</DialogTitle>
     </Dialog>
   );
@@ -26,19 +22,20 @@ const SimpleTestFormController = ({ children }) => {
   const [createPerson] = useMutation(CREATE_PERSON);
   const history = useHistory();
 
-  const onSubmit = async values => {
+  const onSubmit = values => {
     try {
-      // return new Promise(resolve => {
-      //   setTimeout(() => resolve(), 1000);
-      // });
-
-      const resp = await createPerson({
+      const resp = createPerson({
         variables: {
           person: {
             firstName: values.firstName,
             lastName: values.lastName
           }
-        }
+        },
+        refetchQueries: [
+          {
+            query: ALL_PEOPLE
+          }
+        ]
       });
       console.log(resp);
       const personId = get(resp, "data.createPerson.person.id");
@@ -121,9 +118,7 @@ export const SimpleTestPage = () => {
   const location = useLocation();
 
   useEffect(() => {
-    console.log("useEffect");
-
-    const id = get(location, "state.personId");
+    const id = get(location, "state.personId", "");
     setPersonId(id);
     console.log(personId);
     if (personId !== "") {
@@ -133,13 +128,24 @@ export const SimpleTestPage = () => {
     }
   }, [location, personId]);
 
+  const handleDialogClose = () => {
+    setOpened(false);
+    console.log(location);
+    location.state = {};
+    console.log(location);
+  };
+
   return (
     <>
-      <h1>Simple Form aaaaa</h1>
+      <h1>Simple Form</h1>
       <SimpleTestFormController>
         {props => <SimpleTestForm {...props} />}
       </SimpleTestFormController>
-      <AlertDialog open={opened} title={`New ID #${personId}`} />
+      <AlertDialog
+        open={opened}
+        onClose={handleDialogClose}
+        title={`New ID #${personId}`}
+      />
     </>
   );
 };

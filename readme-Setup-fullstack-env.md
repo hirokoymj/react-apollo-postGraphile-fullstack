@@ -1,14 +1,43 @@
-# React, PostGraphile for GraphQL and Postgres
+# Fullstack setup for React, PostGraphile and Postgres
 
-https://reactjs.org/docs/create-a-new-react-app.html#create-react-app
+### Installed package:
+- [create-react-app](https://github.com/facebook/create-react-app)
+- [nodemon](https://www.npmjs.com/package/nodemon)
+- [concurrently](https://github.com/kimmobrunfeldt/concurrently)
 
-https://github.com/facebook/create-react-app#create-react-app--
+### Start client
 
-https://github.com/crsandeep/simple-react-full-stack#concurrently
+```js
+npm run start
+```
+URL: 
+
+```js
+http://localhost:3000/
+```
+<hr />
+
+### Start backend
+
+```js
+npm run server
+```
+
+**PostGraphiQL**
+```js
+http://localhost:3030/graphiql
+```
+<hr />
+
+### Start both client and server
+
+```js
+npm run dev
+```
+<hr />
+
 
 ### References:
 
-- [nodemon](https://www.npmjs.com/package/nodemon)
-- [Material-UI Installation](https://material-ui.com/getting-started/installation/)
-- [concurrently](https://github.com/kimmobrunfeldt/concurrently)
-- [Redx Form]()
+- [simple-react-full-stack](https://github.com/crsandeep/simple-react-full-stack)
+
