@@ -15,4 +15,11 @@
 
 ### Material-Ui
 
-<hr />
+### Visual Studio Code Config
+
+#### visual studio code file open in new tab
+
+**Open Files always in a new tab**
+
+- Code -> Preferences -> Setting -> Workbench -> Editor Management -> Enable Preview **False**
+- [Open files always in a new tab](https://stackoverflow.com/questions/38713405/open-files-always-in-a-new-tab?rq=1)
