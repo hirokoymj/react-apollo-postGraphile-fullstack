@@ -5,18 +5,20 @@
 - [@apollo/react-hooks]()
 - [Apollo Client: React](https://www.apollographql.com/docs/react/)
 
-### Installation
+## Installation
 
 ```js
 npm install @apollo/react-hooks
 ```
+
 <hr />
 
 ## Mutations
 
-**Example 1 - useMutation**
+### Example 1 - useMutation
 
 - POINT - variables have to pass `person object`!!
+
 ```js
 { person: $person }
 ===> CORRECT
@@ -34,6 +36,7 @@ variables: {
 ```
 
 GraphQL
+
 ```js
 export const CREATE_PERSON = gql`
   mutation CreatePerson($person: PersonInput!) {
@@ -49,6 +52,7 @@ export const CREATE_PERSON = gql`
 ```
 
 Mutation
+
 ```js
 import { useMutation } from "@apollo/react-hooks";
 import { CREATE_PERSON } from "../Mutations/CreatePeople";
@@ -71,14 +75,15 @@ const SimpleTestFormController = () => {
     }
   };
 ```
+
 <hr />
 
-**Example 2 - useMutation with refetchQueries**
+### Example 2 - useMutation with refetchQueries
 
 - [useMutation](https://www.apollographql.com/docs/react/api/react-hooks/#usemutation)
 - [Mutations](https://www.apollographql.com/docs/react/data/mutations/)
-- refetchQueries : Array 
- An array or function that allows you to specify which queries you want to refetch after a mutation has occurred. 
+- refetchQueries : Array
+  An array or function that allows you to specify which queries you want to refetch after a mutation has occurred.
 
 ```js
 const SimpleFormController = () => {
@@ -102,8 +107,7 @@ const SimpleFormController = () => {
       console.error(e);
     }
   };
-}
+};
 ```
 
 <hr />
-

@@ -2,20 +2,17 @@
 
 ### Apollo Client
 
-- [@apollo/react-hooks](Apollo-Client-React.md#apolloreact-hooks)
-- [Installation](Apollo-Client-React.md#installation)
-- [useMutation: example 1](Apollo-Client-React.md#usemutation---example-1)
+- [@apollo/react-hooks](reacme-React-Apollo.md#apolloreact-hooks)
+- [Installation](reacme-React-Apollo.md#installation)
+- [example 1 - useMutation](reacme-React-Apollo.md#mutations)
+- [example 1 - useMutation with refetchQueries](reacme-React-Apollo.md#mutations)
 
 ### Redux Form
 
-- [submitting property](Redux-Form.md#submitting-property)
-- [formValueSelector](Redux-Form.md#formvalueselector)
-- [Redux Form Architecture](Redux-Form.md#Redux-Form-Architecture)
+- [submitting property](readme-Redux-Form.md#submitting-property)
+- [formValueSelector](readme-Redux-Form.md#formvalueselector)
+- [Redux Form Architecture](readme-Redux-Form.md#Redux-Form-Architecture)
 
 ### Material-Ui
 
-
 <hr />
-
-
-
