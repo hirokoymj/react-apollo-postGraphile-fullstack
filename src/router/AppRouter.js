@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { Homepage } from "../components/Homepage";
 import { NotFoundPage } from "../components/NotFoundPage";
 //import { SimpleTestPage } from "../components/SimpleTestPage";
+import { DemoPage } from "../components/DemoPage";
 
 const IntroPage = () => {
   return <h1>Intro Page</h1>;
@@ -23,6 +24,7 @@ export const AppRouter = () => (
         <Route path="/home" component={Homepage} />
         <Route path="/about" component={About} />
         <Route path="/test" component={TestPage} />
+        <Route path="/demo" component={DemoPage} />
         <Route component={NotFoundPage} />
       </Switch>
     </div>

@@ -8,7 +8,7 @@ import { ThemeProvider } from "./Styles/ThemeProvier";
 import { ReduxProvider } from "./Redux/ReduxProvider";
 
 const client = new ApolloBoost({
-  uri: "http://localhost:3030/graphql"
+  uri: "http://localhost:4000/graphql"
 });
 
 const App = () => (

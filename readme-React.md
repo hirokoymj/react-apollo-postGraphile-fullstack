@@ -1,6 +1,6 @@
 # React Basic
 
-## Default export component vs named export one
+## Default export vs named export
 
 **PageTitle.js**
 
@@ -36,3 +36,5 @@ export const Test = () => {
   );
 };
 ```
+
+## HOC

@@ -12,6 +12,7 @@
     "concurrently": "^5.1.0",
     "express": "^4.17.1",
     "graphql": "^14.6.0",
+    "graphql-cli": "^3.0.14",
     "lodash": "^4.17.15",
     "nodemon": "^2.0.2",
     "postgraphile": "^4.5.5",
