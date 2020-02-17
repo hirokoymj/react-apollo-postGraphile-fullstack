@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from "react";
-import { Field, reduxForm } from "redux-form";
-import { useMutation } from "@apollo/react-hooks";
+import { reduxForm } from "redux-form";
 import get from "lodash/get";
 import Dialog from "@material-ui/core/Dialog";
 import DialogTitle from "@material-ui/core/DialogTitle";
-import { useHistory, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
-import { CREATE_PERSON } from "../Mutations/CreatePeople";
-import { ALL_PEOPLE } from "../Queries/PeopleQueries";
+import { SimpleFormFields } from "./FormFields/SimpleFormFields";
+import { SimpleTestFormController } from "./FormControllers/SimpleTestFormController";
+import { PageTitle } from "./Layout/PageTitle";
+import { PageLayout } from "./Layout/PageLayout";
+import { PeopleTable } from "../Queries/PeopleTable";
 
 const AlertDialog = ({ open, title, onClose }) => {
   return (
@@ -17,89 +19,7 @@ const AlertDialog = ({ open, title, onClose }) => {
   );
 };
 
-const SimpleTestFormController = ({ children }) => {
-  const initialValues = {};
-  const [createPerson] = useMutation(CREATE_PERSON);
-  const history = useHistory();
-
-  const onSubmit = values => {
-    try {
-      const resp = createPerson({
-        variables: {
-          person: {
-            firstName: values.firstName,
-            lastName: values.lastName
-          }
-        },
-        refetchQueries: [
-          {
-            query: ALL_PEOPLE
-          }
-        ]
-      });
-      console.log(resp);
-      const personId = get(resp, "data.createPerson.person.id");
-      console.log(personId);
-      history.push("/home", { personId });
-    } catch (e) {
-      console.error(e);
-    }
-  };
-
-  const validate = values => {
-    let errors = {};
-
-    if (!values.firstName) errors.firstName = "Required";
-
-    if (!values.lastName) errors.lastName = "Required";
-    return errors;
-  };
-
-  return children({
-    initialValues,
-    validate,
-    onSubmit
-  });
-};
-
-const SimpleFormFields = ({ handleSubmit, pristine, reset, submitting }) => {
-  return (
-    <>
-      <div>
-        <label>First Name</label>
-        <div>
-          <Field
-            name="firstName"
-            component="input"
-            type="text"
-            placeholder="First Name"
-          />
-        </div>
-      </div>
-      <div>
-        <label>Last Name</label>
-        <div>
-          <Field
-            name="lastName"
-            component="input"
-            type="text"
-            placeholder="Last Name"
-          />
-        </div>
-      </div>
-      <div>
-        <button type="submit" onClick={handleSubmit}>
-          {submitting ? "Submitting" : "Submit"}
-        </button>
-        <button type="button" disabled={pristine || submitting} onClick={reset}>
-          Clear Values
-        </button>
-      </div>
-    </>
-  );
-};
-
-export const SimpleTestForm = reduxForm({
+const SimpleTestForm = reduxForm({
   form: "SIMPLE_FORM"
 })(({ handleSubmit, pristine, reset, submitting }) => {
   return (
@@ -136,16 +56,17 @@ export const SimpleTestPage = () => {
   };
 
   return (
-    <>
-      <h1>Simple Form</h1>
+    <PageLayout>
+      <PageTitle title="Simple Test Form" />
       <SimpleTestFormController>
         {props => <SimpleTestForm {...props} />}
       </SimpleTestFormController>
+      <PeopleTable tableHead={["nodeId", "id", "firstName", "lastName"]} />
       <AlertDialog
         open={opened}
         onClose={handleDialogClose}
         title={`New ID #${personId}`}
       />
-    </>
+    </PageLayout>
   );
 };

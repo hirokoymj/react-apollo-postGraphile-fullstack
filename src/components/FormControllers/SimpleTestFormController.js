@@ -1,4 +1,3 @@
-import React from "react";
 import { useMutation } from "@apollo/react-hooks";
 import get from "lodash/get";
 import { useHistory } from "react-router-dom";
