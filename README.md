@@ -26,10 +26,7 @@
 
 ### Visual Studio Code Config
 
-**Open Files always in a new tab**
-
-- Code -> Preferences -> Setting -> Workbench -> Editor Management -> Enable Preview **False**
-- [Open files always in a new tab](https://stackoverflow.com/questions/38713405/open-files-always-in-a-new-tab?rq=1)
+- [Open Files always in a new tab](readme-VSC.md#open-files-always-in-a-new-tab)
 
 ### React
 
