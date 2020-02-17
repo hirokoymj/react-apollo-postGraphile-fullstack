@@ -111,3 +111,109 @@ const SimpleFormController = () => {
 ```
 
 <hr />
+
+### useQuery
+
+**GraphiQL**
+
+```js
+query{
+    allPeople {
+      edges {
+        node {
+          id
+          nodeId
+          firstName
+          lastName
+          fullName
+          about
+          createdAt
+          updatedAt
+        }
+      }
+      pageInfo {
+        hasNextPage
+        hasPreviousPage
+        startCursor
+        endCursor
+      }
+      totalCount
+    }
+}
+```
+
+- [react-hooks: useQuery](https://www.apollographql.com/docs/react/api/react-hooks/#usequery)
+
+```js
+export const ALL_PEOPLE = gql`
+  query AllPeople {
+    allPeople {
+      edges {
+        node {
+          id
+          nodeId
+          firstName
+          lastName
+          fullName
+          about
+          createdAt
+          updatedAt
+        }
+      }
+      pageInfo {
+        hasNextPage
+        hasPreviousPage
+        startCursor
+        endCursor
+      }
+      totalCount
+    }
+  }
+`;
+```
+
+```js
+export const PeopleTable = ({ tableHead }) => {
+  const { loading, data } = useQuery(ALL_PEOPLE);
+  const all_people = get(data, "allPeople.edges", []);
+
+  return (
+    <>
+      {loading ? (
+        <p>loading</p>
+      ) : (
+        <Paper>
+          <Table>
+            <TableHead>
+              <TableRow>
+                {tableHead.map(data => (
+                  <TableCell key={data}>{data}</TableCell>
+                ))}
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {all_people.map(({ node }) => (
+                <TableRow key={node.id}>
+                  {tableHead.map(item => (
+                    <TableCell key={item}>{node[item]}</TableCell>
+                  ))}
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </Paper>
+      )}
+    </>
+  );
+};
+```
+
+<hr />
+
+### useQuery with params
+
+<hr />
+
+### useQuery with fetchMore
+
+<hr />
