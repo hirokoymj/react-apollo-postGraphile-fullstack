@@ -13,7 +13,7 @@
 - [Installation](readme-React-Apollo.md#installation)
 - [example 1 - useMutation](readme-React-Apollo.md#example-1---usemutation)
 - [example 2 - useMutation with refetchQueries](readme-React-Apollo.md#example-2---usemutation-with-refetchqueries)
-- useQuery
+- [useQuery](readme-React-Apollo.md#usequery)
 - useQuery with fetchMore
 - useQuery with params
 
